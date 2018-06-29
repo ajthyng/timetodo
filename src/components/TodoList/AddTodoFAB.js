@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
-import { Platform, TouchableHighlight } from 'react-native'
+import { Platform, TouchableHighlight, Animated } from 'react-native'
 import Ripple from 'react-native-material-ripple'
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import IOSIcon from 'react-native-vector-icons/Ionicons'
 import styled from 'styled-components'
 
 const Touchable = Platform.select({
-  ios: ({props, children}) => (
+  ios: (props) => (
     <TouchableHighlight {...props}>
       <Container>
-        {children}
+        {props.children}
       </Container>
     </TouchableHighlight>
   ),
-  android: ({props, children}) => (
-    <StyledRipple rippleOpacity={0.1} rippleContainerBorderRadius={28} {...props}>{children}</StyledRipple>
+  android: (props) => (
+    <StyledRipple rippleOpacity={0.1} rippleContainerBorderRadius={28} {...props}>{props.children}</StyledRipple>
   )
 })
 
@@ -50,13 +50,24 @@ const StyledRipple = styled(Ripple)`
 `
 
 class AddTodoFAB extends Component {
+  constructor (props) {
+    super(props)
+    this.animation = new Animated.Value(0)
+  }
+
   render () {
+    const {onPress, visible} = this.props
+
     return (
-      <Touchable>
+      <Touchable style={{opacity: visible ? 1 : 0}} onPress={onPress}>
         <Icon name="plus" size={36} color='white'/>
       </Touchable>
     )
   }
+}
+
+AddTodoFAB.defaultProps = {
+  onPress: () => {}
 }
 
 export default AddTodoFAB

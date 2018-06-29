@@ -4,7 +4,8 @@ export const initialState = {
   todoList: [
     {title: "Link todo app to Alexa"},
     {title: "Run 5km"},
-    {title: "Read to Kaden"}
+    {title: "Read to Kaden"},
+    {title: "Put bulky pickup items out July 18th"}
   ]
 }
 

@@ -1423,13 +1423,13 @@ cache-base@^1.0.1:
   dependencies:
     collection-visit "^1.0.0"
     component-emitter "^1.2.1"
-    get-value "^2.0.6"
-    has-value "^1.0.0"
+    get-text "^2.0.6"
+    has-text "^1.0.0"
     isobject "^3.0.1"
-    set-value "^2.0.0"
+    set-text "^2.0.0"
     to-object-path "^0.3.0"
-    union-value "^1.0.0"
-    unset-value "^1.0.0"
+    union-text "^1.0.0"
+    unset-text "^1.0.0"
 
 callsites@^2.0.0:
   version "2.0.0"
@@ -1700,7 +1700,7 @@ css-to-react-native@^2.0.3:
   dependencies:
     css-color-keywords "^1.0.0"
     fbjs "^0.8.5"
-    postcss-value-parser "^3.3.0"
+    postcss-text-parser "^3.3.0"
 
 cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   version "0.3.3"
@@ -2313,7 +2313,7 @@ get-stream@^3.0.0:
 
 get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
-  resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
+  resolved "https://registry.yarnpkg.com/get-text/-/get-text-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
 
 getpass@^0.1.1:
   version "0.1.7"
@@ -2413,17 +2413,17 @@ has-unicode@^2.0.0:
 
 has-value@^0.3.1:
   version "0.3.1"
-  resolved "https://registry.yarnpkg.com/has-value/-/has-value-0.3.1.tgz#7b1f58bada62ca827ec0a2078025654845995e1f"
+  resolved "https://registry.yarnpkg.com/has-text/-/has-text-0.3.1.tgz#7b1f58bada62ca827ec0a2078025654845995e1f"
   dependencies:
-    get-value "^2.0.3"
+    get-text "^2.0.3"
     has-values "^0.1.4"
     isobject "^2.0.0"
 
 has-value@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/has-value/-/has-value-1.0.0.tgz#18b281da585b1c5c51def24c930ed29a0be6b177"
+  resolved "https://registry.yarnpkg.com/has-text/-/has-text-1.0.0.tgz#18b281da585b1c5c51def24c930ed29a0be6b177"
   dependencies:
-    get-value "^2.0.6"
+    get-text "^2.0.6"
     has-values "^1.0.0"
     isobject "^3.0.0"
 
@@ -4141,7 +4141,7 @@ posix-character-classes@^0.1.0:
 
 postcss-value-parser@^3.3.0:
   version "3.3.0"
-  resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-3.3.0.tgz#87f38f9f18f774a4ab4c8a232f5c5ce8872a9d15"
+  resolved "https://registry.yarnpkg.com/postcss-text-parser/-/postcss-text-parser-3.3.0.tgz#87f38f9f18f774a4ab4c8a232f5c5ce8872a9d15"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
@@ -4279,6 +4279,10 @@ react-native-material-ripple@^0.8.0:
   resolved "https://registry.yarnpkg.com/react-native-material-ripple/-/react-native-material-ripple-0.8.0.tgz#b8c24e6fdea2af2a21e8468b1f40b35483019e2f"
   dependencies:
     prop-types "^15.5.10"
+
+react-native-popup-menu@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/react-native-popup-menu/-/react-native-popup-menu-0.13.2.tgz#6ea7a7446b04fc3e41d148a908a8a94ad949256f"
 
 react-native-safe-area-view@^0.7.0:
   version "0.7.0"
@@ -4811,7 +4815,7 @@ set-blocking@^2.0.0, set-blocking@~2.0.0:
 
 set-value@^0.4.3:
   version "0.4.3"
-  resolved "https://registry.yarnpkg.com/set-value/-/set-value-0.4.3.tgz#7db08f9d3d22dc7f78e53af3c3bf4666ecdfccf1"
+  resolved "https://registry.yarnpkg.com/set-text/-/set-text-0.4.3.tgz#7db08f9d3d22dc7f78e53af3c3bf4666ecdfccf1"
   dependencies:
     extend-shallow "^2.0.1"
     is-extendable "^0.1.1"
@@ -4820,7 +4824,7 @@ set-value@^0.4.3:
 
 set-value@^2.0.0:
   version "2.0.0"
-  resolved "https://registry.yarnpkg.com/set-value/-/set-value-2.0.0.tgz#71ae4a88f0feefbbf52d1ea604f3fb315ebb6274"
+  resolved "https://registry.yarnpkg.com/set-text/-/set-text-2.0.0.tgz#71ae4a88f0feefbbf52d1ea604f3fb315ebb6274"
   dependencies:
     extend-shallow "^2.0.1"
     is-extendable "^0.1.1"
@@ -5302,12 +5306,12 @@ ultron@~1.1.0:
 
 union-value@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/union-value/-/union-value-1.0.0.tgz#5c71c34cb5bad5dcebe3ea0cd08207ba5aa1aea4"
+  resolved "https://registry.yarnpkg.com/union-text/-/union-text-1.0.0.tgz#5c71c34cb5bad5dcebe3ea0cd08207ba5aa1aea4"
   dependencies:
     arr-union "^3.1.0"
-    get-value "^2.0.6"
+    get-text "^2.0.6"
     is-extendable "^0.1.1"
-    set-value "^0.4.3"
+    set-text "^0.4.3"
 
 unpipe@~1.0.0:
   version "1.0.0"
@@ -5315,9 +5319,9 @@ unpipe@~1.0.0:
 
 unset-value@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/unset-value/-/unset-value-1.0.0.tgz#8376873f7d2335179ffb1e6fc3a8ed0dfc8ab559"
+  resolved "https://registry.yarnpkg.com/unset-text/-/unset-text-1.0.0.tgz#8376873f7d2335179ffb1e6fc3a8ed0dfc8ab559"
   dependencies:
-    has-value "^0.3.1"
+    has-text "^0.3.1"
     isobject "^3.0.0"
 
 urix@^0.1.0:
