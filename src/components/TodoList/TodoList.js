@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, StyleSheet } from 'react-native'
+import { FlatList, ScrollView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { addTodo } from '../../redux/actions/todo'
 import AddTodoBasic from '../AddTodo/AddTodoBasic'
@@ -13,7 +13,7 @@ const Container = styled.View`
   justify-content: center;
 `
 
-const TodoFlatList = styled(FlatList)`
+const TodoScrollList = styled(FlatList)`
   flex: 1;
   width: 100%;
 `
@@ -58,14 +58,7 @@ class TodoList extends Component {
     }
   }
 
-  renderItem = ({item}) => (
-    <TodoItem
-      activeRow={this.state.activeRow}
-      onOpen={() => this.setState({activeRow: item.id})}
-      onClose={(item, rowId, direction) => this.onSwipeClose(item, rowId, direction)}
-      todo={item}
-    />
-  )
+  renderItem = ({item}) => <TodoItem todo={item}/>
 
   render () {
     const {todos} = this.props
@@ -73,14 +66,13 @@ class TodoList extends Component {
 
     return (
       <Container>
-        <TodoFlatList
+        <TodoScrollList
           data={todos}
-          extraData={this.state.activeRow}
           ItemSeparatorComponent={Separator}
-          keyExtractor={(item, index) => index.toString(10)}
+          keyExtractor={({id}) => id}
           renderItem={this.renderItem}
         />
-        <AddTodoFAB visible={!inputVisible} onPress={this.toggleAddTodo}/>
+        <AddTodoFAB visible={!inputVisible} onPress={this.toggleAddTodo} onLongPress={this.props.saveTodo}/>
         <AddTodoBasic
           ref={c => this.addTodo = c}
           onBlur={this.toggleAddTodo}

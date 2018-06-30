@@ -4,13 +4,6 @@ import { addTodo } from '../../redux/actions/todo'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
-const Container = styled.View`
-  width: 100%;
-  height: 60px;
-  align-items: center;
-  justify-content: center;
-`
-
 const AddTodoInput = styled(TextInput)`
   width: 100%;
   height: 100%;
@@ -21,6 +14,8 @@ const TodoInputContainer = styled(Animated.View)`
   height: 60px;
   position: absolute;
   bottom: 0;
+  align-items: center;
+  justify-content: center;
   background-color: white;
 `
 
@@ -74,22 +69,20 @@ class AddTodoBasic extends Component {
       inputRange: [0, 1],
       outputRange: [0, 1]
     })
-    const { onBlur, onSubmitEditing } = this.props
+    const {onBlur, onSubmitEditing} = this.props
     return (
-      <Container>
-        <TodoInputContainer style={{opacity, transform: [{translateY}]}}>
-          <AddTodoInput
-            innerRef={c => this.input = c}
-            blurOnSubmit={true}
-            onChangeText={text => this.setState({text})}
-            value={this.state.text}
-            onBlur={onBlur}
-            onSubmitEditing={() => onSubmitEditing(this.state.text)}
-            underlineColorAndroid="transparent"
-            placeholder="Add your to-do"
-          />
-        </TodoInputContainer>
-      </Container>
+      <TodoInputContainer style={{opacity, transform: [{translateY}]}}>
+        <AddTodoInput
+          innerRef={c => this.input = c}
+          blurOnSubmit={true}
+          onChangeText={text => this.setState({text})}
+          value={this.state.text}
+          onBlur={onBlur}
+          onSubmitEditing={() => onSubmitEditing(this.state.text)}
+          underlineColorAndroid="transparent"
+          placeholder="Add your to-do"
+        />
+      </TodoInputContainer>
     )
   }
 }

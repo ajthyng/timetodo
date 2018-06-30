@@ -12,7 +12,7 @@ export const initialState = {
 
 const addTodo = (state, action) => {
   let newTodo = {
-    title: action.todo.title,
+    ...action.todo,
     id: uuidv1()
   }
 

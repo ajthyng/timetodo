@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Ripple from 'react-native-material-ripple'
+import { TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-const Container = styled(Ripple)`
+const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
@@ -20,14 +20,17 @@ const DeleteText = styled.Text`
   color: white;
   text-align: center;
 `
+
 class DeleteTodo extends Component {
   render () {
-    const { onPress } = this.props
+    const {onPress} = this.props
     return (
-      <Container onPress={onPress}>
-        <DeleteIcon name='trash-o' />
-        <DeleteText>DELETE</DeleteText>
-      </Container>
+      <TouchableHighlight style={{flex: 1}} onPress={onPress}>
+        <Container>
+          <DeleteIcon name='trash-o'/>
+          <DeleteText>DELETE</DeleteText>
+        </Container>
+      </TouchableHighlight>
     )
   }
 }
