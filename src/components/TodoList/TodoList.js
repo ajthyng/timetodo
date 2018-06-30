@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { addTodo } from '../../redux/actions/todo'
 import AddTodoBasic from '../AddTodo/AddTodoBasic'
@@ -18,12 +18,18 @@ const TodoFlatList = styled(FlatList)`
   width: 100%;
 `
 
+const Separator = styled.View`
+  width: 100%;
+  height: ${StyleSheet.hairlineWidth};
+  background-color: #36353440;
+`
+
 class TodoList extends Component {
   constructor (props) {
     super(props)
-    this.contentMargin = 8
     this.state = {
-      inputVisible: false
+      inputVisible: false,
+      activeRow: null
     }
   }
 
@@ -46,17 +52,33 @@ class TodoList extends Component {
     }
   }
 
+  onSwipeClose = (item, rowId, direction) => {
+    if (item.id === this.state.activeRow && typeof direction !== 'undefined') {
+      this.setState({activeRow: null})
+    }
+  }
+
+  renderItem = ({item}) => (
+    <TodoItem
+      activeRow={this.state.activeRow}
+      onOpen={() => this.setState({activeRow: item.id})}
+      onClose={(item, rowId, direction) => this.onSwipeClose(item, rowId, direction)}
+      todo={item}
+    />
+  )
+
   render () {
     const {todos} = this.props
     const {inputVisible} = this.state
-    console.log(this.state)
+
     return (
       <Container>
         <TodoFlatList
           data={todos}
-          contentContainerStyle={{marginTop: this.contentMargin}}
+          extraData={this.state.activeRow}
+          ItemSeparatorComponent={Separator}
           keyExtractor={(item, index) => index.toString(10)}
-          renderItem={({item}) => <TodoItem contentMargin={this.contentMargin} title={item.title}/>}
+          renderItem={this.renderItem}
         />
         <AddTodoFAB visible={!inputVisible} onPress={this.toggleAddTodo}/>
         <AddTodoBasic

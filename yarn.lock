@@ -4648,7 +4648,7 @@ request@^2.83.0:
     safe-buffer "^5.1.1"
     tough-cookie "~2.3.3"
     tunnel-agent "^0.6.0"
-    uuid "^3.1.0"
+    uuidv3 "^3.1.0"
 
 require-directory@^2.1.1:
   version "2.1.1"
@@ -5351,11 +5351,11 @@ utils-merge@1.0.1:
 
 uuid@3.0.1:
   version "3.0.1"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
+  resolved "https://registry.yarnpkg.com/uuidv3/-/uuidv3-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
 
 uuid@^3.1.0:
   version "3.3.2"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
+  resolved "https://registry.yarnpkg.com/uuidv3/-/uuidv3-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.3"
@@ -5517,7 +5517,7 @@ xcode@^0.9.1:
   dependencies:
     pegjs "^0.10.0"
     simple-plist "^0.2.1"
-    uuid "3.0.1"
+    uuidv3 "3.0.1"
 
 xml-name-validator@^3.0.0:
   version "3.0.0"
