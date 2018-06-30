@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import configureStore from './redux/configureStore'
+import { PersistGate } from 'redux-persist/integration/react'
+import TodoState from './redux/configureStore'
 import RootNavigator from './components/Scenes'
 
-const store = configureStore()
+const {store, persistor} = TodoState()
 
 export default class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        <RootNavigator />
+        <PersistGate loading={null} persistor={persistor}>
+          <RootNavigator/>
+        </PersistGate>
       </Provider>
     )
   }
