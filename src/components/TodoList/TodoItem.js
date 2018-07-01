@@ -3,15 +3,18 @@ import { TouchableWithoutFeedback, Animated, UIManager, LayoutAnimation } from '
 import Swipeout from 'react-native-swipeout'
 import { connect } from 'react-redux'
 import DeleteTodo from './DeleteTodo'
+import CheckBox from './CheckBox'
 import styled from 'styled-components'
 import { removeTodo } from '../../redux/actions/todo'
 
 UIManager.setLayoutAnimationEnabledExperimental(true)
 
 const Container = styled(Animated.View)`
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
   background-color: white;
+  padding-left: 16px;
 `
 
 const TodoTitle = styled.Text`
@@ -22,7 +25,8 @@ const TodoTitle = styled.Text`
 
 class TodoItem extends Component {
   state = {
-    todoStyle: { height: 56 }
+    todoStyle: {height: 56},
+    done: false
   }
 
   layoutConfig = LayoutAnimation.create(
@@ -48,10 +52,16 @@ class TodoItem extends Component {
         backgroundColor='white'
         right={[deleteButton]}
       >
-        <Container style={[this.state.todoStyle]}>
-          <TodoTitle>{todo.title}</TodoTitle>
-        </Container>
+        <TouchableWithoutFeedback onPress={() => {
+          this.setState({done: !this.state.done})
+        }}>
+          <Container style={[this.state.todoStyle]}>
+            <CheckBox done={this.state.done}/>
+            <TodoTitle>{todo.title}</TodoTitle>
+          </Container>
+        </TouchableWithoutFeedback>
       </Swipeout>
+
     )
   }
 }

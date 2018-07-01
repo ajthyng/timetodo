@@ -25,6 +25,10 @@ const Separator = styled.View`
 `
 
 class TodoList extends Component {
+  static navigationOptions = {
+    title: 'My Day'
+  }
+
   constructor (props) {
     super(props)
     this.state = {
@@ -49,12 +53,6 @@ class TodoList extends Component {
     if ((text || '').length > 0) {
       this.props.saveTodo({title: text})
       this.addTodo.clearText()
-    }
-  }
-
-  onSwipeClose = (item, rowId, direction) => {
-    if (item.id === this.state.activeRow && typeof direction !== 'undefined') {
-      this.setState({activeRow: null})
     }
   }
 

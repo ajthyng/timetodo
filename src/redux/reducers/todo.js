@@ -31,10 +31,22 @@ const removeTodo = (state, action) => {
   }
 }
 
+const markAsDone = (state, action) => {
+  let id = action.todo.id
+
+  //Look at how disgusting JS can be
+  let todos = state.todos.map(todo => todo.id === id ? {...todo, done: true} : todo)
+  return {
+    ...state,
+    todoList: todos
+  }
+}
+
 export function todoReducer (state = initialState, action) {
   switch (action.type) {
     case actions.ADD_TODO: return addTodo(state, action);
     case actions.REMOVE_TODO: return removeTodo(state, action);
+    case actions.MARK_AS_DONE: return markAsDone(state, action);
     default: return state
   }
 }

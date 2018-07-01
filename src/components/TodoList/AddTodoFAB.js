@@ -60,7 +60,7 @@ class AddTodoFAB extends Component {
 
     return (
       <Touchable style={{opacity: visible ? 1 : 0}} onLongPress={() => onLongPress({title: Math.floor(Math.random()*1000).toString(10)})} onPress={onPress}>
-        <Icon name="plus" size={36} color='white'/>
+        <Icon name="plus" size={36} color='papayawhip'/>
       </Touchable>
     )
   }
