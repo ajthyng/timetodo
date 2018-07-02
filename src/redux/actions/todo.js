@@ -1,7 +1,7 @@
 export const actions = {
   ADD_TODO: 'add_todo',
   REMOVE_TODO: 'remove_todo',
-  MARK_AS_DONE: 'mark_as_done'
+  SET_STATUS: 'set_status'
 }
 
 export const addTodo = (todo) => ({
@@ -14,8 +14,11 @@ export const removeTodo = (todo) => ({
   todo
 })
 
-export const markAsDone = (todo) => ({
-  type: actions.MARK_AS_DONE
-})
+export const setTodoStatus = (todo) => {
+  return {
+    type: actions.SET_STATUS,
+    todo
+  }
+}
 
 

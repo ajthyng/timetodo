@@ -30,7 +30,7 @@ const Checked = styled(Animated.View)`
 
 class CheckBox extends Component {
   state = {
-    animation: new Animated.Value(0)
+    animation: new Animated.Value(this.props.done ? 1 : 0)
   }
 
   componentDidUpdate (prevProps) {

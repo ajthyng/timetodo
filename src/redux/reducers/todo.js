@@ -1,12 +1,12 @@
-import {actions} from '../actions/todo'
+import { actions } from '../actions/todo'
 import uuidv1 from 'uuid/v1'
 
 export const initialState = {
   todoList: [
-    {title: "Link todo app to Alexa", id: uuidv1()},
-    {title: "Run 5km", id: uuidv1()},
-    {title: "Read to Kaden", id: uuidv1()},
-    {title: "Put bulky pickup items out July 18th", id: uuidv1()}
+    {title: 'Link todo app to Alexa', id: uuidv1()},
+    {title: 'Run 5km', id: uuidv1()},
+    {title: 'Read to Kaden', id: uuidv1()},
+    {title: 'Put bulky pickup items out July 18th', id: uuidv1()}
   ]
 }
 
@@ -31,11 +31,11 @@ const removeTodo = (state, action) => {
   }
 }
 
-const markAsDone = (state, action) => {
+const setStatus = (state, action) => {
   let id = action.todo.id
 
   //Look at how disgusting JS can be
-  let todos = state.todos.map(todo => todo.id === id ? {...todo, done: true} : todo)
+  let todos = state.todoList.map(todo => todo.id === id ? action.todo : todo)
   return {
     ...state,
     todoList: todos
@@ -44,9 +44,13 @@ const markAsDone = (state, action) => {
 
 export function todoReducer (state = initialState, action) {
   switch (action.type) {
-    case actions.ADD_TODO: return addTodo(state, action);
-    case actions.REMOVE_TODO: return removeTodo(state, action);
-    case actions.MARK_AS_DONE: return markAsDone(state, action);
-    default: return state
+    case actions.ADD_TODO:
+      return addTodo(state, action)
+    case actions.REMOVE_TODO:
+      return removeTodo(state, action)
+    case actions.SET_STATUS:
+      return setStatus(state, action)
+    default:
+      return state
   }
 }
