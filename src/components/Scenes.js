@@ -6,12 +6,7 @@ const RootNavigator = createStackNavigator({
 }, {
   initialRouteName: 'TodoList',
   navigationOptions: {
-    headerStyle: {
-      backgroundColor: '#fff',
-      elevation: 4,
-      shadowOpacity: 1
-    },
-    headerTintColor: '#363534'
+    header: null
   }
 })
 

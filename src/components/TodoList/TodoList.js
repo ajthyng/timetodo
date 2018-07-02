@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { FlatList, ScrollView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
+import TodoListHeader from './TodoListHeader/TodoListHeader'
 import { addTodo } from '../../redux/actions/todo'
 import AddTodoBasic from '../AddTodo/AddTodoBasic'
 import TodoItem from './TodoItem'
@@ -64,6 +65,7 @@ class TodoList extends Component {
 
     return (
       <Container>
+        <TodoListHeader />
         <TodoScrollList
           data={todos}
           ItemSeparatorComponent={Separator}

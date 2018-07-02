@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
+import { MenuProvider } from 'react-native-popup-menu'
 import TodoState from './redux/configureStore'
 import RootNavigator from './components/Scenes'
 
@@ -11,7 +12,9 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <RootNavigator/>
+          <MenuProvider>
+            <RootNavigator />
+          </MenuProvider>
         </PersistGate>
       </Provider>
     )
