@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { TextInput, Animated, Dimensions, Keyboard } from 'react-native'
-import { addTodo } from '../../redux/actions/todo'
-import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 const AddTodoInput = styled(TextInput)`

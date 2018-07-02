@@ -1,21 +1,14 @@
 import React, { Component } from 'react'
-import TodoListMenu from './TodoListMenu'
+import { Animated } from 'react-native'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
 
-const Container = styled.View`
+const Container = styled(Animated.View)`
   height: 150px;
   width: 100%;
-  background-color: #9970c8;
-  elevation: 5;
+  background-color: #5f4178;
   align-items: center;
   justify-content: center;
-`
-
-const Menu = styled(TodoListMenu)`
-  position: absolute;
-  left: 16px;
-  top: 16px;
 `
 
 const HeaderTitle = styled.Text`
@@ -52,14 +45,22 @@ const getOrdinal = (dayNum) => {
 }
 
 class TodoListHeader extends Component {
+  animationRange = this.props.animationRange
+
   render () {
     const today = dayjs()
+    const transform = [{
+      translateY: this.animationRange.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 63-150]
+      })
+    }]
+
     return (
-      <Container>
-        <Menu />
+      <Container style={[this.props.style, {transform}]}>
         <HeaderSummary>
           <HeaderTitle>My Day</HeaderTitle>
-          <HeaderDate>{today.format(`dddd,  MMMM D`) + getOrdinal(today.date())}</HeaderDate>
+          <HeaderDate>{today.format('dddd - MMMM D') + getOrdinal(today.date())}</HeaderDate>
         </HeaderSummary>
       </Container>
     )
