@@ -103,12 +103,15 @@ class TodoListHeader extends Component {
 
     const opacity = this.animationRange.interpolate({
       inputRange: [0, 1],
-      outputRange: [0.4, 1]
+      outputRange: [0.6, 1]
     })
 
     return (
       <Container style={[this.props.style, {transform: [{translateY: translateHeaderY}]}]}>
-        <Image blurRadius={3} style={{width: '100%', height: '100%'}} resizeMode='cover' source={require('../../../../media/img/sunrise.jpg')} />
+        <Image
+          blurRadius={3}
+          style={{opacity: 1, width: '100%', height: '100%'}}
+          resizeMode='cover' source={require('../../../../media/img/sunrise_buildings.jpg')} />
         <ImageOverlay style={{opacity}} />
         <HeaderSummary onLayout={({nativeEvent: {layout}}) => this.setState({headerLayout: layout})}>
           <HeaderTitle

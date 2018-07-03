@@ -12,7 +12,9 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <MenuProvider>
+          <MenuProvider customStyles={{
+            backdrop: {backgroundColor: 'black', opacity: 0.5}
+          }}>
             <RootNavigator />
           </MenuProvider>
         </PersistGate>

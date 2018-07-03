@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Platform, TouchableHighlight, View } from 'react-native'
+import { Platform, TouchableHighlight } from 'react-native'
 import { MenuTrigger, Menu, MenuOption, MenuOptions } from 'react-native-popup-menu'
 import IonIcon from 'react-native-vector-icons/Ionicons'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import styled from 'styled-components'
+import TodoListMenuRenderer from './TodoListMenuRenderer'
 
 const Icon = Platform.select({
   android: MaterialIcon,
@@ -31,16 +32,22 @@ class TodoListMenu extends Component {
   render () {
     return (
       <Container style={this.props.style}>
-        <Menu>
+        <Menu renderer={TodoListMenuRenderer}>
           <MenuTrigger>
             <MenuIcon name='menu' onLayout={this.props.onLayout} />
           </MenuTrigger>
-          <MenuOptions>
+          <MenuOptions customStyles={optionStyles}>
             <MenuOption onSelect={() => alert('Test')} text='Test' />
           </MenuOptions>
         </Menu>
       </Container>
     )
+  }
+}
+
+const optionStyles = {
+  optionsContainer: {
+    backgroundColor: 'white'
   }
 }
 
