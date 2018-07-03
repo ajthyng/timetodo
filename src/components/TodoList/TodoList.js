@@ -54,6 +54,7 @@ class TodoList extends Component {
     super(props)
     this.state = {
       inputVisible: false,
+      iconCenter: 0,
       activeRow: null
     }
   }
@@ -86,7 +87,10 @@ class TodoList extends Component {
 
     return (
       <Container>
-        <Menu />
+        <Menu onLayout={({nativeEvent: {layout}}) => {
+          this.setState({iconCenter: layout.y + layout.height / 2})
+        }}
+        />
         <TodoScrollList
           data={todos}
           onScroll={Animated.event([{
@@ -97,11 +101,14 @@ class TodoList extends Component {
           keyExtractor={({id}) => id}
           renderItem={this.renderItem}
         />
-        <Header animationRange={this.scrollY.interpolate({
-          inputRange: [0, 150 - 63],
-          outputRange: [0, 1],
-          extrapolate: 'clamp'
-        })} />
+        <Header
+          animationRange={this.scrollY.interpolate({
+            inputRange: [0, 150 - 63],
+            outputRange: [0, 1],
+            extrapolate: 'clamp'
+          })}
+          iconCenter={this.state.iconCenter}
+        />
         <AddTodoFAB visible={!inputVisible} onPress={this.toggleAddTodo} onLongPress={this.props.saveTodo} />
         <AddTodoBasic
           ref={c => this.addTodo = c}

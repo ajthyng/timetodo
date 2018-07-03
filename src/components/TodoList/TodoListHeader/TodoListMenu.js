@@ -33,7 +33,7 @@ class TodoListMenu extends Component {
       <Container style={this.props.style}>
         <Menu>
           <MenuTrigger>
-            <MenuIcon name='menu' />
+            <MenuIcon name='menu' onLayout={this.props.onLayout} />
           </MenuTrigger>
           <MenuOptions>
             <MenuOption onSelect={() => alert('Test')} text='Test' />
