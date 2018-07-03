@@ -45,8 +45,8 @@ const StyledRipple = styled(Ripple)`
   border-radius: 28px;
   elevation: 4;
   background-color: tomato;
-  bottom: 32px;
-  right: 32px;
+  bottom: 16px;
+  right: 16px;
 `
 
 class AddTodoFAB extends Component {
