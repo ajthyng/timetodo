@@ -3,8 +3,10 @@ import { Image, Animated } from 'react-native'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
 
+const HeaderHeight = 180
+
 const Container = styled(Animated.View)`
-  height: 150px;
+  height: ${HeaderHeight};
   width: 100%;
   background-color: #5f4178;
   align-items: center;
@@ -54,6 +56,7 @@ const getOrdinal = (dayNum) => {
 }
 
 class TodoListHeader extends Component {
+  static HEIGHT = HeaderHeight
   animationRange = this.props.animationRange
   state = {
     titleLayout: null,
@@ -62,16 +65,11 @@ class TodoListHeader extends Component {
   }
 
   render () {
-
-    if (this.state.titleLayout && this.state.dateLayout && this.props.iconCenter) {
-      console.log(this.state, this.props.iconCenter)
-    }
-
     const today = dayjs()
 
     const translateHeaderY = this.animationRange.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, 63 - 150]
+      outputRange: [0, 63 - TodoListHeader.HEIGHT]
     })
 
     const translateTitleX = this.animationRange.interpolate({

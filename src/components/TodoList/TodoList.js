@@ -8,6 +8,8 @@ import AddTodoBasic from '../AddTodo/AddTodoBasic'
 import TodoItem from './TodoItem'
 import AddTodoFAB from './AddTodoFAB'
 import styled from 'styled-components'
+import uuidv1 from 'uuid/v1'
+import {TODO} from '../../util/constants'
 
 const Container = styled.View`
   flex: 1;
@@ -26,6 +28,7 @@ const Menu = styled(TodoListMenu)`
 const TodoScrollList = styled(Animated.createAnimatedComponent(FlatList))`
   flex: 1;
   width: 100%;
+  background-color: white;
 `
 
 const Header = styled(TodoListHeader)`
@@ -42,7 +45,13 @@ const Separator = styled.View`
 
 const HeaderSpacer = styled.View`
   width: 100%;
-  height: 150px;
+  height: ${TodoListHeader.HEIGHT}px;
+`
+
+const EmptyTodoItem = styled.View`
+  height: 56px;
+  width: 100%;
+  background-color: white;
 `
 
 class TodoList extends Component {
@@ -78,7 +87,9 @@ class TodoList extends Component {
     }
   }
 
-  renderItem = ({item}) => <TodoItem todo={item} />
+  renderItem = ({item}) => {
+    return item === null ? <EmptyTodoItem /> : <TodoItem todo={item} />
+  }
   scrollY = new Animated.Value(0)
 
   render () {
@@ -98,12 +109,12 @@ class TodoList extends Component {
           }], {useNativeDriver: true})}
           ItemSeparatorComponent={Separator}
           ListHeaderComponent={<HeaderSpacer />}
-          keyExtractor={({id}) => id}
+          keyExtractor={(item) => item === null ? uuidv1() : item.id}
           renderItem={this.renderItem}
         />
         <Header
           animationRange={this.scrollY.interpolate({
-            inputRange: [0, 150 - 63],
+            inputRange: [0, TodoListHeader.HEIGHT - 63],
             outputRange: [0, 1],
             extrapolate: 'clamp'
           })}
@@ -120,9 +131,21 @@ class TodoList extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  todos: state.todo.todoList
-})
+const mapStateToProps = state => {
+  const numberOfTodos = state.todo.todoList.length
+  const numberToFillScreen = 20
+  let todos = []
+
+  if (numberOfTodos < numberToFillScreen) {
+    let missingTodos = numberToFillScreen - numberOfTodos
+    for (let i = 0; i < missingTodos; i++) {
+      todos.push(null)
+    }
+  }
+  return {
+    todos: [...state.todo.todoList, ...todos]
+  }
+}
 
 const mapDispatchToProps = dispatch => ({
   saveTodo: todo => dispatch(addTodo(todo))
