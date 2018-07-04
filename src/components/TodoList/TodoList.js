@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, Animated, StyleSheet } from 'react-native'
+import { Dimensions, FlatList, Animated, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import TodoListMenu from './TodoListHeader/TodoListMenu'
 import TodoListHeader from './TodoListHeader/TodoListHeader'
@@ -9,7 +9,7 @@ import TodoItem from './TodoItem'
 import AddTodoFAB from './AddTodoFAB'
 import styled from 'styled-components'
 import uuidv1 from 'uuid/v1'
-import {TODO} from '../../util/constants'
+import { TODO } from '../../util/constants'
 
 const Container = styled.View`
   flex: 1;
@@ -134,15 +134,17 @@ class TodoList extends Component {
 
 const mapStateToProps = state => {
   const numberOfTodos = state.todo.todoList.length
-  const numberToFillScreen = 20
+  const numberToFillScreen = Math.ceil(Dimensions.get('window').height / 56) + 1
+  let numberOfTodosToAppend = numberToFillScreen - numberOfTodos
+  if (numberOfTodosToAppend < 6) {
+    numberOfTodosToAppend = 6
+  }
   let todos = []
 
-  if (numberOfTodos < numberToFillScreen) {
-    let missingTodos = numberToFillScreen - numberOfTodos
-    for (let i = 0; i < missingTodos; i++) {
-      todos.push(null)
-    }
+  for (let i = 0; i < numberOfTodosToAppend; i++) {
+    todos.push(null)
   }
+
   return {
     todos: [...state.todo.todoList, ...todos]
   }
