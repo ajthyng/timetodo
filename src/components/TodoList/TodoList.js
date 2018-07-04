@@ -38,9 +38,10 @@ const Header = styled(TodoListHeader)`
 `
 
 const Separator = styled.View`
-  width: 100%;
   height: ${StyleSheet.hairlineWidth};
-  background-color: #36353440;
+  margin-left: 12px;
+  margin-right: 12px;
+  background-color: #36353480;
 `
 
 const HeaderSpacer = styled.View`
