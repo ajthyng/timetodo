@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Platform, TouchableHighlight } from 'react-native'
-import { MenuTrigger, Menu, MenuOption, MenuOptions } from 'react-native-popup-menu'
+import { Platform } from 'react-native'
+import { MenuTrigger, Menu, MenuOptions } from 'react-native-popup-menu'
 import IonIcon from 'react-native-vector-icons/Ionicons'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import TodoListHeader from '../TodoListHeader/TodoListHeader'
 import styled from 'styled-components'
 import TodoListMenuRenderer from './TodoListMenuRenderer'
+import TodoListMenuItem from './TodoListMenuItem'
 
 const Icon = Platform.select({
   android: MaterialIcon,
@@ -21,11 +23,17 @@ const MenuIcon = styled(Icon)`
   font-size: 27px;
   color: #f5f0ec;
 `
-
-const Touchable = styled(TouchableHighlight)`
-  position: absolute;
-  align-items: center;
+const TodoListMenuHeader = styled.View`
+  height: ${TodoListHeader.HEIGHT - 1}px;
   justify-content: center;
+  align-items: center;
+  background-color: white;
+`
+
+const TodoListMenuSeparator = styled.View`
+  height: 1px;
+  width: 100%;
+  background-color: #363534;
 `
 
 class TodoListMenu extends Component {
@@ -37,7 +45,10 @@ class TodoListMenu extends Component {
             <MenuIcon name='menu' onLayout={this.props.onLayout} />
           </MenuTrigger>
           <MenuOptions customStyles={optionStyles}>
-            <MenuOption onSelect={() => alert('Test')} text='Test' />
+            <TodoListMenuHeader />
+            <TodoListMenuSeparator />
+            <TodoListMenuItem style={{paddingTop: 8}} label='my day' />
+            <TodoListMenuItem label='completed' />
           </MenuOptions>
         </Menu>
       </Container>

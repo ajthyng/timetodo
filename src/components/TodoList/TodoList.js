@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Dimensions, FlatList, Animated, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
-import TodoListMenu from './TodoListHeader/TodoListMenu'
+import TodoListMenu from './TodoListMenu/TodoListMenu'
 import TodoListHeader from './TodoListHeader/TodoListHeader'
 import { addTodo } from '../../redux/actions/todo'
 import AddTodoBasic from '../AddTodo/AddTodoBasic'
@@ -9,7 +9,6 @@ import TodoItem from './TodoItem'
 import AddTodoFAB from './AddTodoFAB'
 import styled from 'styled-components'
 import uuidv1 from 'uuid/v1'
-import { TODO } from '../../util/constants'
 
 const Container = styled.View`
   flex: 1;
@@ -100,7 +99,7 @@ class TodoList extends Component {
     return (
       <Container>
         <Menu onLayout={({nativeEvent: {layout}}) => {
-          this.setState({iconCenter: layout.y + layout.height / 2})
+          this.setState({iconCenter: layout.y + layout.height})
         }}
         />
         <TodoScrollList

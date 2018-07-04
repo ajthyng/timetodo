@@ -3,7 +3,7 @@ import { Image, Animated } from 'react-native'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
 
-const HeaderHeight = 180
+const HeaderHeight = 185
 
 const Container = styled(Animated.View)`
   height: ${HeaderHeight};
@@ -83,8 +83,7 @@ class TodoListHeader extends Component {
     if (!!titleLayout && !!headerLayout && !!this.props.iconCenter && !!dateLayout) {
       const titleCenter = titleLayout.y + titleLayout.height / 2
       const headerTop = headerLayout.y - headerLayout.height
-      newTitleCenter = headerTop - titleCenter + 2
-
+      newTitleCenter = this.props.iconCenter - titleLayout.height / 3
       newDateX = dateLayout.width * 2
     }
 
