@@ -39,7 +39,7 @@ class CheckBox extends Component {
         toValue: this.props.done ? 1 : 0,
         duration: 200,
         useNativeDriver: true
-      }).start()
+      }).start(() => this.props.onDoneAnimating())
     }
   }
 

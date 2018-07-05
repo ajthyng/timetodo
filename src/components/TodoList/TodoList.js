@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimensions, FlatList, Animated, StyleSheet } from 'react-native'
+import { Dimensions, FlatList, Animated, StyleSheet, LayoutAnimation } from 'react-native'
 import { connect } from 'react-redux'
 import TodoListMenu from './TodoListMenu/TodoListMenu'
 import TodoListHeader from './TodoListHeader/TodoListHeader'
@@ -9,6 +9,8 @@ import TodoItem from './TodoItem'
 import AddTodoFAB from './AddTodoFAB'
 import styled from 'styled-components'
 import uuidv1 from 'uuid/v1'
+import { TODO } from '../../util/constants'
+
 
 const Container = styled.View`
   flex: 1;
@@ -90,6 +92,7 @@ class TodoList extends Component {
   renderItem = ({item}) => {
     return item === null ? <EmptyTodoItem /> : <TodoItem todo={item} />
   }
+
   scrollY = new Animated.Value(0)
 
   render () {
